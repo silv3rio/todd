@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+// Execute the Server
+task runServer(type:JavaExec, dependsOn: classes) {
+   main = 'net.jnjmx.todd.Server'
+   jvmArgs = ['-Dcom.sun.management.jmxremote']
+   classpath = sourceSets.main.runtimeClasspath
+}
+
+// Execute the Client
+task runClient(type:JavaExec, dependsOn: classes) {
+   main = 'net.jnjmx.todd.ClientApp'
+   classpath = sourceSets.main.runtimeClasspath
+}
