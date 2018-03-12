@@ -9,7 +9,7 @@ Gradle
 
 # 2. Build
 
-Type
+Type:
 
 	gradle Build
 
@@ -17,21 +17,28 @@ Type
 
 ## Run the Server (JMX local)
 
+Type:
+
 	gradle runServer
 
 ## Execute the Client App
+
+Type:
 
 	gradle runClient
 
 ## Run the Server (JMX remote activated)
 
-		gradle runServerRemote
+Type:
+
+	gradle runServerRemote
 
 ## Execute the Client App that Access JMX remotely
 
-		gradle runClient2
-	
+Type:
+
+	gradle runClient2
+
 # 4. IDE Support
-		
+
 You should be able to open the project in Eclipse and Netbeans.
-		
