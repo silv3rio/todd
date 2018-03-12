@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'eclipse'
 
 // Execute the Server (local JMX only)
 task runServer(type:JavaExec, dependsOn: classes) {
