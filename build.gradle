@@ -1,14 +1,29 @@
 apply plugin: 'java'
 
-// Execute the Server
+// Execute the Server (local JMX only)
 task runServer(type:JavaExec, dependsOn: classes) {
    main = 'net.jnjmx.todd.Server'
    jvmArgs = ['-Dcom.sun.management.jmxremote']
    classpath = sourceSets.main.runtimeClasspath
 }
 
+// Execute the Server (enable remote JMX)
+task runServerRemote(type:JavaExec, dependsOn: classes) {
+   main = 'net.jnjmx.todd.Server'
+   jvmArgs = ['-Dcom.sun.management.jmxremote.port=10500',
+              '-Dcom.sun.management.jmxremote.authenticate=false',
+              '-Dcom.sun.management.jmxremote.ssl=false']
+   classpath = sourceSets.main.runtimeClasspath
+}
+
 // Execute the Client
 task runClient(type:JavaExec, dependsOn: classes) {
    main = 'net.jnjmx.todd.ClientApp'
+   classpath = sourceSets.main.runtimeClasspath
+}
+
+// Execute the ClientApp2
+task runClient2(type:JavaExec, dependsOn: classes) {
+   main = 'net.jnjmx.todd.ClientApp2'
    classpath = sourceSets.main.runtimeClasspath
 }

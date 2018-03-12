@@ -22,3 +22,12 @@ Type
 ## Execute the Client App
 
 	gradle runClient
+
+## Run the Server (JMX remote activated)
+
+		gradle runServerRemote
+
+## Execute the Client App that Access JMX remotely
+
+		gradle runClient2
+		
