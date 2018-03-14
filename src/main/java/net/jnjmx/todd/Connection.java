@@ -46,4 +46,12 @@ public class Connection implements Comparable {
 
 		return (int) (timestamp - ((Connection) connection).getTimestamp());
 	}
+	
+	//(ATB)
+	public String getClientAddress() {
+		if (socket!=null) {
+			return socket.getInetAddress().getHostAddress();
+		}
+		else return "";
+	}
 }

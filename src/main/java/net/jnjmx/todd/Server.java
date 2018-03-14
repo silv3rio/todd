@@ -36,7 +36,7 @@ public class Server implements ServerMBean, NotificationListener {
 
 	private long tzero;
 	private int connections;
-
+	
 	public static void main(String[] args) throws Exception {
 		try {
 			
@@ -68,6 +68,9 @@ public class Server implements ServerMBean, NotificationListener {
 		while (server.isActive()) {
 			Connection k = server.waitForConnection();
 			server.activateSession(k);
+			
+			//(ATB)
+			server.internalSetLastClient(k.getClientAddress());
 		}
 		}
 		catch (Exception ex)
@@ -256,5 +259,17 @@ public class Server implements ServerMBean, NotificationListener {
 			connectionQueue.remove(k);
 		}
 		return k;
+	}
+
+	// (ATB)
+	private String lastClient="";
+	
+	private void internalSetLastClient(String last) {
+		lastClient=last;
+	}
+	
+	@Override
+	public String getLastClient() {
+		return lastClient;
 	}
 }

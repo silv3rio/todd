@@ -8,4 +8,7 @@ public interface ServerMBean {
 	Integer getConnections();
 	Integer getSessions();
 	Long getUptime();
+	
+	// (ATB)
+	String getLastClient();
 }
