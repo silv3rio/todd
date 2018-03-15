@@ -1,24 +1,30 @@
 package net.jnjmx.todd;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class ClientApp {
 
 	/**
 	 * @param args
+	 * @throws InterruptedException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		System.out.println("Todd Client App...");
 		System.out.println("Connecting to todd server");
 		
 		try {
-			Client c=new Client("192.168.56.11");
+
+			System.out.println("Connecting...");
 			
+			Client c=new Client("192.168.56.11");
+
 			System.out.println("The current time of day on todd server is: "+c.timeOfDay());
 			
-			System.out.println("Press enter to exit...");
-			System.in.read();
+			System.out.println("Waiting 60 secs to receive notifications");
+			Thread.sleep(60000);
 			
 			c.close();
 			

@@ -28,3 +28,11 @@ task runClient2(type:JavaExec, dependsOn: classes) {
    main = 'net.jnjmx.todd.ClientApp2'
    classpath = sourceSets.main.runtimeClasspath
 }
+
+// Execute the ClientApp3
+task runClient3(type:JavaExec, dependsOn: classes) {
+   main = 'net.jnjmx.todd.ClientApp3'
+   args = ['192.168.56.11:10500']
+   classpath = sourceSets.main.runtimeClasspath
+}
+
