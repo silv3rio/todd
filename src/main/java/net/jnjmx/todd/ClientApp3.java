@@ -51,10 +51,6 @@ public class ClientApp3 {
 		mbs.invoke(spmon, "setThresholds", new Object[] { new Integer(2), new Integer(0) },
 				new String[] { "java.lang.Number", "java.lang.Number" });
 
-		// mbs.addNotificationListener(spmon, new ObjectName("todd:id=Server"), null,
-		// new Object());
-		// mbs.addNotificationListener(new ObjectName("todd:id=SessionPool"), new
-		// JMXNotificationListener(), null, null);
 		mbs.addNotificationListener(spmon, new JMXNotificationListener(), null, null);
 
 		mbs.invoke(spmon, "start", new Object[] {}, new String[] {});
@@ -73,21 +69,14 @@ public class ClientApp3 {
 
 		AttributeList spmal = new AttributeList();
 		spmal.add(new Attribute("ObservedObject", new ObjectName("todd:id=Server")));
-		spmal.add(new Attribute("ObservedAttribute", "Sessions"));
+		spmal.add(new Attribute("ObservedAttribute", "Connections"));  // "Sessions"));
 		spmal.add(new Attribute("GranularityPeriod", new Long(10000)));
 		spmal.add(new Attribute("Notify", new Boolean(true)));
 		spmal.add(new Attribute("InitThreshold", new Integer(1)));	
-		spmal.add(new Attribute("Offset", new Integer(0)));	
+		spmal.add(new Attribute("Offset", new Integer(2)));	
 		spmal.add(new Attribute("DifferenceMode", new Boolean(false)));
 		mbs.setAttributes(spmon, spmal);
 
-//		mbs.invoke(spmon, "setThresholds", new Object[] { new Integer(2), new Integer(0) },
-//				new String[] { "java.lang.Number", "java.lang.Number" });
-
-		// mbs.addNotificationListener(spmon, new ObjectName("todd:id=Server"), null,
-		// new Object());
-		// mbs.addNotificationListener(new ObjectName("todd:id=SessionPool"), new
-		// JMXNotificationListener(), null, null);
 		mbs.addNotificationListener(spmon, new JMXNotificationListener(), null, null);
 
 		mbs.invoke(spmon, "start", new Object[] {}, new String[] {});
@@ -99,13 +88,17 @@ public class ClientApp3 {
 	 */
 	public static void main(String[] args) throws IOException {
 
+		System.out.println("Todd ClientApp3... Accessing JMX Beans (using JMX Notifications with TODD MBeans)");
+
 		try {
 
 			String server = "192.168.56.11:10500";
 
-			if (args.length == 2) {
-				server = args[1];
+			if (args.length >= 1) {
+				server = args[0];
 			}
+
+			System.out.println("Connecting to TODD server at "+server+" ...");
 
 			// Connect to a remote MBean Server
 			JMXConnector c = javax.management.remote.JMXConnectorFactory
@@ -113,30 +106,13 @@ public class ClientApp3 {
 
 			MBeanServerConnection mbs = c.getMBeanServerConnection();
 
-			/*
-			 * MBeanServerConnection conn=new MBeanServerConnection();
-			 * ManagementFactory.newPlatformMXBeanProxy(MBeanServerConnection connection,
-			 * String mxbeanName, Class<T> mxbeanInterface)
-			 */
-
-			Set<ObjectInstance> mbeans = mbs.queryMBeans(null, null);
-
-			for (ObjectInstance mbean : mbeans) {
-				System.out.println(mbean.getClassName());
-			}
-
-			// Lets try to access the MBean net.jnjmx.todd.Server:
-			ObjectName son = new ObjectName("todd:id=Server");
-			ObjectInstance ob = mbs.getObjectInstance(son);
-
-			// mbs.invoke(son, "start", new Object[] {}, new String[] {});
-			Long value = (Long) mbs.getAttribute(son, "Uptime");
-
-			System.out.println("Uptime=" + value);
-
-			// Set a Nofification Handler
+			System.out.println("Setting up notification handlers...");
+			
+			// Set a Notification Handler
 			configureMonitor1(mbs);
+			
 			configureMonitor2(mbs);
+			
 			// mbs.addNotificationListener(new ObjectName("todd:id=SessionPool"), new
 			// JMXNotificationListener(), null, null);
 			// Thread.sleep(100000);

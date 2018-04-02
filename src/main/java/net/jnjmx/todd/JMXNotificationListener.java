@@ -6,7 +6,7 @@ import javax.management.NotificationListener;
 public class JMXNotificationListener implements NotificationListener {
 	@Override
 	public void handleNotification(Notification notification, Object handback) {
-		System.out.println("Receivied Notifications");
+		System.out.println("Received Notification");
 		System.out.println("======================================");
 		System.out.println("Timestamp: " + notification.getTimeStamp());
 		System.out.println("Type: " + notification.getType());
