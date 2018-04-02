@@ -20,6 +20,7 @@ task runServerRemote(type:JavaExec, dependsOn: classes) {
 // Execute the Client
 task runClient(type:JavaExec, dependsOn: classes) {
    main = 'net.jnjmx.todd.ClientApp'
+   args = ['127.0.0.1']
    classpath = sourceSets.main.runtimeClasspath
 }
 
