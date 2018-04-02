@@ -12,7 +12,7 @@ public class ClientApp {
 	 */
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
-		System.out.println("Todd Client App...");
+		System.out.println("Todd ClientApp... The 'regular' TODD client application.");
 		
 		try {
 			String server = "192.168.56.11";
