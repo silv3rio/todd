@@ -23,13 +23,22 @@ public class ClientApp2 {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		
+
+		System.out.println("Todd ClientApp2... Accessing JMX Beans (and the 'Uptime' property of TODD MBean 'Server')");
+
 		try {
+			String server = "192.168.56.11:10500";
+
+			if (args.length >= 1) {
+				server = args[0];
+			}
+
+			System.out.println("Connecting to JMX Agent (with running TODD server) at "+server+" ...");
+
 			// Connect to a remote MBean Server
 			JMXConnector c = javax.management.remote.JMXConnectorFactory
-					.connect(new JMXServiceURL(
-							"service:jmx:rmi:///jndi/rmi://192.168.56.11:10500/jmxrmi"));
-
+					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + server + "/jmxrmi"));
+			
 			MBeanServerConnection mbs = c.getMBeanServerConnection();
 
 			/*
