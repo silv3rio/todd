@@ -13,7 +13,7 @@ public class JMXNotificationListener implements NotificationListener {
 		System.out.println("Sequence Number: " + notification.getSequenceNumber());
 		System.out.println("Message: " + notification.getMessage());
 		System.out.println("User Data: " + notification.getUserData());
-		System.out.println("Message: " + notification.getSource());
+		System.out.println("Source: " + notification.getSource());
 		System.out.println("======================================");
 	}
 }
