@@ -64,7 +64,7 @@ public class ClientApp3 {
 		if (mbeans.isEmpty()) {
 			mbs.createMBean("javax.management.monitor.CounterMonitor", spmon);
 		} else {
-			// noting to do...
+			// nothing to do...
 		}
 
 		AttributeList spmal = new AttributeList();
