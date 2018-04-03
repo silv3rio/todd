@@ -39,6 +39,12 @@ Type:
 
 	gradle runClient2
 
+## Execute the Client App that Demonstrates JMX Notifications remotely
+
+Type:
+
+	gradle runClient3
+	
 # 4. IDE Support
 
 You should be able to open the project in Eclipse and Netbeans.
