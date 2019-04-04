@@ -10,7 +10,7 @@ task runServer(type:JavaExec, dependsOn: classes) {
 	else {
 	   jvmArgs = ['-Dcom.sun.management.jmxremote']
 	}
- 
+
    classpath = sourceSets.main.runtimeClasspath
 }
 
@@ -20,10 +20,13 @@ task runServerRemote(type:JavaExec, dependsOn: classes) {
     if (project.hasProperty("appArgs")) {
         jvmArgs Eval.me(appArgs)
     }
-	else {
+	else { 
 	   jvmArgs = ['-Dcom.sun.management.jmxremote.port=10500',
+              '-Dcom.sun.management.jmxremote.rmi.port=10500',
               '-Dcom.sun.management.jmxremote.authenticate=false',
-              '-Dcom.sun.management.jmxremote.ssl=false']
+              '-Dcom.sun.management.jmxremote.ssl=false',
+              '-Djava.rmi.server.hostname=0.0.0.0',
+              '-Dcom.sun.management.jmxremote.host=0.0.0.0']
     }
    classpath = sourceSets.main.runtimeClasspath
 }
@@ -63,4 +66,3 @@ task runClient3(type:JavaExec, dependsOn: classes) {
    	}
    classpath = sourceSets.main.runtimeClasspath
 }
-
