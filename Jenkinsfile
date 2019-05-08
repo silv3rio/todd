@@ -11,7 +11,7 @@ pipeline {
       stage('Build') {
           steps {
               echo 'Building...'
-              sh 'gradle clean build'
+              sh './gradlew clean build'
           }
       }
       stage('Jenkins Archiving') {
@@ -23,7 +23,7 @@ pipeline {
       stage ('Nexus Archiving') {
           steps {
             echo 'Nexus Archiving...'
-              sh 'gradle uploadArchives'
+              sh './gradlew uploadArchives'
           }
       }
     }
