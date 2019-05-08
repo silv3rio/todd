@@ -5,7 +5,7 @@ This gradle project is now configured to work with a local installation of the N
 
 To upload the jar into the local Nexus type:
 
- 	gradle uploadArchives
+ 	./gradlew uploadArchives
 
 # 1. Requirements
 
@@ -17,7 +17,7 @@ Gradle
 
 Type:
 
-	gradle jar
+	./gradlew jar
 
 # 3. Run the Application
 
@@ -25,31 +25,31 @@ Type:
 
 Type:
 
-	gradle runServer
+	./gradlew runServer
 
 ## Execute the Client App
 
 Type:
 
-	gradle runClient
+	./gradlew runClient
 
 ## Run the Server (JMX remote activated)
 
 Type:
 
-	gradle runServerRemote
+	./gradlew runServerRemote
 
 ## Execute the Client App that Access JMX remotely
 
 Type:
 
-	gradle runClient2
+	./gradlew runClient2
 
 ## Execute the Client App that Demonstrates JMX Notifications remotely
 
 Type:
 
-	gradle runClient3
+	./gradlew runClient3
 
 # 4. IDE Support
 
