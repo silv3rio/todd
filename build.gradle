@@ -1,5 +1,28 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+group = 'pt.isep.cogsi'
+version = '1.0.0-SNAPSHOT'
+
+repositories {
+  maven {
+    url "${nexusUrl}/repository/maven-public"
+  }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "${nexusUrl}/repository/maven-releases") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
+            snapshotRepository(url: "${nexusUrl}/repository/maven-snapshots") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
+        }
+    }
+}
 
 // Execute the Server (local JMX only)
 task runServer(type:JavaExec, dependsOn: classes) {
@@ -20,7 +43,7 @@ task runServerRemote(type:JavaExec, dependsOn: classes) {
     if (project.hasProperty("appArgs")) {
         jvmArgs Eval.me(appArgs)
     }
-	else { 
+	else {
 	   jvmArgs = ['-Dcom.sun.management.jmxremote.port=10500',
               '-Dcom.sun.management.jmxremote.rmi.port=10500',
               '-Dcom.sun.management.jmxremote.authenticate=false',

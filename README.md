@@ -1,17 +1,23 @@
 TODD JMX Demonstration Application
 ========================
 
+This gradle project is now configured to work with a local installation of the Nexus Artifact Repository Manager.
+
+To upload the jar into the local Nexus type:
+
+ 	gradle uploadArchives
+
 # 1. Requirements
 
 Java JDK
 
 Gradle
 
-# 2. Build
+# 2. Build the Jar
 
 Type:
 
-	gradle Build
+	gradle jar
 
 # 3. Run the Application
 
@@ -44,7 +50,7 @@ Type:
 Type:
 
 	gradle runClient3
-	
+
 # 4. IDE Support
 
 You should be able to open the project in Eclipse and Netbeans.
