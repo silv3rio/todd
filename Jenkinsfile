@@ -17,7 +17,7 @@ pipeline {
       stage('Jenkins Archiving') {
           steps {
               echo 'Jenkins Archiving...'
-              archiveArtifacts 'build/distributions/*'
+              archiveArtifacts 'build/libs/*'
           }
       }
       stage ('Nexus Archiving') {
