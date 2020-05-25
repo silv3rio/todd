@@ -5,7 +5,7 @@ pipeline {
       stage('Checkout') {
           steps {
               echo 'Checking out...'
-              git credentialsId: 'atb-bitbucket-credentials', url: 'https://bitbucket.org/mei-isep/todd/'
+              git credentialsId: 'silv3rio-bitbucket', url: 'https://github.com/silv3rio/todd/'
           }
       }
       stage('Build') {
