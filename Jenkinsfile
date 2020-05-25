@@ -29,7 +29,7 @@ pipeline {
       stage ('Launching ansible playbook mate!!!') {
           steps {
             echo 'siiiiiiiiiiga...'
-            ansiblePlaybook credentialsId: 'private_key', inventory: 'inventories/a/hosts', playbook: 'my_playbook.yml'
+            ansiblePlaybook credentialsId: 'private_key', inventory: 'inventories/a/hosts', playbook: '/root/my_playbook.yml'
           }
       }
     }
