@@ -7,18 +7,18 @@ version = '1.0.0-SNAPSHOT'
 
 repositories {
   maven {
-    url "$http://192.168.20.12/repository/maven-public"
+    url "${nexusUrl}/repository/maven-public"
   }
 }
 
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "$http://192.168.20.12/repository/maven-releases") {
-                authentication(userName: admin, password: pass1234)
+            repository(url: "${nexusUrl}/repository/maven-releases") {
+                authentication(userName: nexusUsername, password: nexusPassword)
             }
-            snapshotRepository(url: "$http://192.168.20.12/repository/maven-snapshots") {
-                authentication(userName: admin, password: pass1234)
+            snapshotRepository(url: "${nexusUrl}/repository/maven-snapshots") {
+                authentication(userName: nexusUsername, password: nexusPassword)
             }
         }
     }
