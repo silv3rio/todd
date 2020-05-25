@@ -26,5 +26,11 @@ pipeline {
               sh './gradlew uploadArchives'
           }
       }
+      stage ('Launching ansible playbook mate!!!') {
+          steps {
+            echo 'siiiiiiiiiiga...'
+            ansiblePlaybook credentialsId: 'private_key', inventory: 'inventories/a/hosts', playbook: 'my_playbook.yml'
+          }
+      }
     }
 }
