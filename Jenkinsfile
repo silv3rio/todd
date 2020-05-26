@@ -26,10 +26,16 @@ pipeline {
               sh './gradlew uploadArchives'
           }
       }
-      stage ('Launching ansible playbook mate!!!') {
+      stage ('Getting latest playbook') {
+          steps {
+            echo 'downloading...'
+            sh 'wget -O playbook.yml https://raw.githubusercontent.com/silv3rio/todd/master/playbook.yml'
+          }
+      }  
+      stage ('Launching ansible playbook...') {
           steps {
             echo 'siiiiiiiiiiga...'
-            ansiblePlaybook playbook: '/var/jenkins_home/my_playbook.yml',inventory: '/var/jenkins_home/hosts',credentialsId: 'foo',sudo:'true'
+            ansiblePlaybook playbook: 'playbook.yml',inventory: '/var/jenkins_home/hosts',credentialsId: 'foo',sudo:'true'
           }
       }
     }
