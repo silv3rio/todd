@@ -29,7 +29,7 @@ pipeline {
       stage ('Launching ansible playbook mate!!!') {
           steps {
             echo 'siiiiiiiiiiga...'
-            ansiblePlaybook inventory: '/var/jenkins_home/hosts', playbook: '/var/jenkins_home/my_playbook.yml'
+            ansiblePlaybook playbook: '/var/jenkins_home/my_playbook.yml'
           }
       }
     }
