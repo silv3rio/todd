@@ -29,7 +29,7 @@ pipeline {
       stage ('Launching ansible playbook mate!!!') {
           steps {
             echo 'siiiiiiiiiiga...'
-            ansiblePlaybook credentialsId: 'private_key', inventory: '/var/jenkins_home/hosts', playbook: '/var/jenkins_home/my_playbook.yml'
+            ansiblePlaybook credentialsId: '/var/jenkins_home/foo', inventory: '/var/jenkins_home/hosts', playbook: '/var/jenkins_home/my_playbook.yml'
           }
       }
     }
