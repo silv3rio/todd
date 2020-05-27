@@ -22,7 +22,7 @@ public class ClientApp4 {
 	private static int disponiveis=poolSizeS;
 	public static void growPool() throws Exception{
 
-		String server = "192.168.56.11:10500";
+		String server = "127.0.0.1:10500";
 
 
 		JMXConnector c = javax.management.remote.JMXConnectorFactory
@@ -44,7 +44,7 @@ public class ClientApp4 {
 	}
 	public static void collectGarbage() throws Exception{
 		try {
-			String tomcatServer = "192.168.56.11:9000";
+			String tomcatServer = "127.0.0.1:9000";
 			JMXConnector tomcatConnector = javax.management.remote.JMXConnectorFactory
 					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + tomcatServer + "/jmxrmi"));
 
@@ -202,7 +202,7 @@ public class ClientApp4 {
 	private static void send_nrdp(String servico,int codigo,String mensagem) throws IOException {
 		try {
 
-			String comando="/tmp/send_nrdp.py -u http://10.0.0.10/nrdp/ -t tokendosilverio -H tomcat -s "+servico+" -S "+codigo+" -o \""+mensagem+"\"";
+			String comando="/tmp/send_nrdp.py -u http://192.168.10.5/nrdp/ -t tokendosilverio -H tomcat -s "+servico+" -S "+codigo+" -o \""+mensagem+"\"";
 
 			//Process process = Runtime.getRuntime().exec(comando);
 
@@ -227,8 +227,8 @@ public class ClientApp4 {
 
 		try {
 
-			String server = "192.168.56.11:10500";
-			String tomcatServer = "192.168.56.11:9000";
+			String server = "127.0.0.1:10500";
+			String tomcatServer = "127.0.0.1:9000";
 			if (args.length >= 1) {
 				server = args[0];
 			}
