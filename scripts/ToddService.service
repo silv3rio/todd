@@ -1,0 +1,11 @@
+[Unit]
+Description = Todd Java Service
+
+[Service]
+Type = forking
+ExecStart = /tmp/ToddService.sh start
+ExecStop = /tmp/ToddService.sh stop
+ExecReload = /tmp/ToddService.sh reload
+
+[Install]
+WantedBy=multi-user.target
