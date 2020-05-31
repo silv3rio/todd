@@ -6,13 +6,4 @@
                 name: update package list
                 become: yes
                 apt: update_cache=yes cache_valid_time=36000
-                
-        hosts: webservers
-        remote_user: root
-        become: yes
-        tasks:
-            - 
-                name: instalar jdk
-                apt:
-                    name: default-jdk
-                    state: present
+
