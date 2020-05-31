@@ -35,7 +35,7 @@ pipeline {
       stage ('Launching ansible playbook...') {
           steps {
             echo 'siiiiiiiiiiga...'
-            ansiblePlaybook playbook: '/var/jenkins_home/play.yml',inventory: '/var/jenkins_home/hosts',credentialsId: 'foo',sudo:'true'
+            ansiblePlaybook playbook: '/var/jenkins_home/playbook.yml',inventory: '/var/jenkins_home/hosts',credentialsId: 'foo',sudo:'true'
           }
       }
     }
