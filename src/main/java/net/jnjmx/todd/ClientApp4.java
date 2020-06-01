@@ -227,7 +227,7 @@ public class ClientApp4 {
 
 		try {
 
-			String server = "127.0.0.1:10500";
+			String server = "192.168.20.20:10500";
 			String tomcatServer = "192.168.20.20:9000";
 			if (args.length >= 1) {
 				server = args[0];
@@ -237,9 +237,11 @@ public class ClientApp4 {
 			System.out.println("Connecting to tomcat server at "+tomcatServer+" ...");
 
 			// Connect to a remote MBean Server
-			/*
+			
 			JMXConnector c = javax.management.remote.JMXConnectorFactory
-					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + server + "/jmxrmi"));*/
+					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + server + "/jmxrmi"));
+			
+			System.out.println("Connected to TODD. now going for tomcat");
 			JMXConnector tomcatConnector = javax.management.remote.JMXConnectorFactory
 					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + tomcatServer + "/jmxrmi"));
 
