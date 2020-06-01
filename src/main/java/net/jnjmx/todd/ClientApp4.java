@@ -242,11 +242,11 @@ public class ClientApp4 {
 					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + server + "/jmxrmi"));
 			
 			System.out.println("Connected to TODD. now going for tomcat");
-			/*JMXConnector tomcatConnector = javax.management.remote.JMXConnectorFactory
-					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + tomcatServer + "/jmxrmi"));*/
+			JMXConnector tomcatConnector = javax.management.remote.JMXConnectorFactory
+					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + tomcatServer + "/jmxrmi"));
 
 			MBeanServerConnection mbs = c.getMBeanServerConnection();
-			//MBeanServerConnection tomcatMBS = tomcatConnector.getMBeanServerConnection();
+			MBeanServerConnection tomcatMBS = tomcatConnector.getMBeanServerConnection();
 
 			System.out.println("Setting up notification handlers...");
 			
