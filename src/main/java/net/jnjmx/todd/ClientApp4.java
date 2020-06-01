@@ -237,18 +237,19 @@ public class ClientApp4 {
 			System.out.println("Connecting to tomcat server at "+tomcatServer+" ...");
 
 			// Connect to a remote MBean Server
+			/*
 			JMXConnector c = javax.management.remote.JMXConnectorFactory
-					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + server + "/jmxrmi"));
+					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + server + "/jmxrmi"));*/
 			JMXConnector tomcatConnector = javax.management.remote.JMXConnectorFactory
 					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + tomcatServer + "/jmxrmi"));
 
-			MBeanServerConnection mbs = c.getMBeanServerConnection();
+			//MBeanServerConnection mbs = c.getMBeanServerConnection();
 			MBeanServerConnection tomcatMBS = tomcatConnector.getMBeanServerConnection();
 
 			System.out.println("Setting up notification handlers...");
 			
 			// Set a Notification Handler
-			configureMonitor1(mbs);
+			//configureMonitor1(mbs);
 			configureMonitorTomcat(tomcatMBS);
 			
 
