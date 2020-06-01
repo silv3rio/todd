@@ -99,4 +99,4 @@
 
             -
                 name: restart todd
-                shell: "/root/restart-todd.sh"
+                shell: /root/restart-todd.sh >> somelog.txt
