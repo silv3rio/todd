@@ -6,4 +6,72 @@
                 name: update package list
                 become: yes
                 apt: update_cache=yes cache_valid_time=36000
+                
+    - 
+        hosts: webservers
+        remote_user: root
+        become: yes
+        tasks:          
+            - 
+                name: instalar tomcat
+                apt:
+                    name: tomcat7
+                    state: present
 
+            - 
+                name: Restart service tomcat7
+                service:
+                    name: tomcat7
+                    state: restarted
+
+#pip e lxml sao necessarios para descarregar o artefacto
+            -
+                name: Install PIP
+                apt: 
+                    name: python-pip
+                    state: present
+
+            -
+                name: Install lxml
+                pip:
+                    name: lxml
+            -
+                name: get latest todd
+                maven_artifact:
+                    group_id: pt.isep.cogsi
+                    artifact_id: cogsiP5
+                    repository_url: 'http://192.168.20.12:8081/repository/maven-snapshots/'
+                    username: admin
+                    password: pass1234
+                    dest: /root/
+
+            -
+                name: executar todd server
+                shell: "java -cp /root/cogsiP5-latest.jar net.jnjmx.todd.Server &"
+
+            -
+                name: executar todd client
+                shell: "java -cp /root/cogsiP5-latest.jar net.jnjmx.todd.ClientApp4 &"
+
+            -
+                name: ativa nrpe
+                shell: "/etc/init.d/nagios-nrpe-server restart"
+                
+
+
+    - 
+        hosts: server1
+        remote_user: root
+        become: yes
+        tasks:          
+            - 
+                name: update etc hosts
+                shell: "echo \"192.168.20.20 server1 >> /etc/hosts\""
+    - 
+        hosts: server2
+        remote_user: root
+        become: yes
+        tasks:          
+            - 
+                name: update etc hosts
+                shell: "echo \"192.168.20.21 server1 >> /etc/hosts\""
