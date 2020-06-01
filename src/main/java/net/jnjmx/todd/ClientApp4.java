@@ -227,7 +227,7 @@ public class ClientApp4 {
 
 		try {
 
-			String server = "192.168.20.20:10500";
+			String server = "127.0.0.1:10500";
 			String tomcatServer = "192.168.20.20:9000";
 			if (args.length >= 1) {
 				server = args[0];
