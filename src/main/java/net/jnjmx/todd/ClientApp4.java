@@ -202,7 +202,7 @@ public class ClientApp4 {
 	private static void send_nrdp(String servico,int codigo,String mensagem) throws IOException {
 		try {
 
-			String comando="/tmp/send_nrdp.py -u http://192.168.10.5/nrdp/ -t tokendosilverio -H tomcat -s "+servico+" -S "+codigo+" -o \""+mensagem+"\"";
+			String comando="/tmp/send_nrdp.py -u http://192.168.10.5/nrdp/ -t tokendosilverio -H serverA -s "+servico+" -S "+codigo+" -o \""+mensagem+"\"";
 
 			//Process process = Runtime.getRuntime().exec(comando);
 
@@ -242,17 +242,17 @@ public class ClientApp4 {
 					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + server + "/jmxrmi"));
 			
 			System.out.println("Connected to TODD. now going for tomcat");
-			/*JMXConnector tomcatConnector = javax.management.remote.JMXConnectorFactory
-					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + tomcatServer + "/jmxrmi"));*/
+			JMXConnector tomcatConnector = javax.management.remote.JMXConnectorFactory
+					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + tomcatServer + "/jmxrmi"));
 
 			MBeanServerConnection mbs = c.getMBeanServerConnection();
-			//MBeanServerConnection tomcatMBS = tomcatConnector.getMBeanServerConnection();
+			MBeanServerConnection tomcatMBS = tomcatConnector.getMBeanServerConnection();
 
 			System.out.println("Setting up notification handlers...");
 			
 			// Set a Notification Handler
 			configureMonitor1(mbs);
-			//configureMonitorTomcat(tomcatMBS);
+			configureMonitorTomcat(tomcatMBS);
 			
 
 			//em vez de correr este cliente 60 segundos fica sempre a correr
