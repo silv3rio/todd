@@ -261,7 +261,7 @@ public class ClientApp4 {
 			while(true)
 			{
 				send_nrdp("passive_jmx_check",0,"todd ta ok com "+disponiveis+" sessoes disponiveis");
-				Thread.sleep(60000);
+				Thread.sleep(160000);
 				collectGarbage();
 			}
 			//c.close();
