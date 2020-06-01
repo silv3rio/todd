@@ -22,7 +22,7 @@ public class ClientApp4 {
 	private static int disponiveis=poolSizeS;
 	public static void growPool() throws Exception{
 
-		String server = "127.0.0.1:10500";
+		String server = "192.168.20.20:10500";
 
 
 		JMXConnector c = javax.management.remote.JMXConnectorFactory
@@ -44,7 +44,7 @@ public class ClientApp4 {
 	}
 	public static void collectGarbage() throws Exception{
 		try {
-			String tomcatServer = "127.0.0.1:9000";
+			String tomcatServer = "192.168.20.20:9000";
 			JMXConnector tomcatConnector = javax.management.remote.JMXConnectorFactory
 					.connect(new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + tomcatServer + "/jmxrmi"));
 
@@ -227,8 +227,8 @@ public class ClientApp4 {
 
 		try {
 
-			String server = "127.0.0.1:10500";
-			String tomcatServer = "127.0.0.1:9000";
+			String server = "192.168.20.20:10500";
+			String tomcatServer = "192.168.20.20:9000";
 			if (args.length >= 1) {
 				server = args[0];
 			}
