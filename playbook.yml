@@ -103,10 +103,8 @@
                 service:
                     name: tomcat7
                     state: restarted          
-            -
-                name: executar todd client
-                shell: "java -cp /root/cogsiP5-latest.jar net.jnjmx.todd.ClientApp4 &"
+            
 
             -
                 name: restart todd
-                script: restart-todd.sh
+                shell: "/root/restart-todd.sh"
