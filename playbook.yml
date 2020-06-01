@@ -63,7 +63,7 @@
                 shell: "echo \"192.168.20.20 server1 >> /etc/hosts\""
 
             -
-                name: executar todd serverRemote
+                name: executar todd server
                 shell: "java -Dcom.sun.management.jmxremote.port=10500 -Dcom.sun.management.jmxremote.rmi.port=10500 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=192.168.20.20 -Dcom.sun.management.jmxremote.host=192.168.20.20 -cp /root/cogsiP5-latest.jar net.jnjmx.todd.Server &"
 
             -
