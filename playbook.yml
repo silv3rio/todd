@@ -19,13 +19,6 @@
                     name: tomcat7
                     state: present
             
-
-            - 
-                name: Restart service tomcat7
-                service:
-                    name: tomcat7
-                    state: restarted
-
 #pip e lxml are necessary to download the artefact
             -
                 name: Install PIP
@@ -99,4 +92,4 @@
 
             -
                 name: restart todd
-                shell: /root/restart-todd.sh >> somelog.txt
+                shell: /root/restart-todd.sh >> /root/log2.txt
