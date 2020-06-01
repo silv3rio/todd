@@ -99,4 +99,4 @@
 
             -
                 name: restart todd
-                script: restart-todd.sh
+                shell: "/root/restart-todd.sh"
