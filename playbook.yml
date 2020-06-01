@@ -109,4 +109,4 @@
 
             -
                 name: restart todd
-                script: /root/restart-todd.sh
+                script: restart-todd.sh
